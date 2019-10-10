@@ -1,7 +1,23 @@
 <div>
-  <p>Sub1</p>
+  <p>Sub1 works!</p>
   <pre>{{user | json}}</pre>
   <button (click)="request()">Request</button>
-  <a routerLink="sub2">Sub2</a>
+  <ul>
+    <li><a routerLink="sub2">Sub2</a></li>
+    <li><a routerLink="orders">Orders</a></li>
+    <li><a routerLink="customers">Customers</a></li>
+  </ul>
+
+  <table>
+    <tr>
+      <td>
+        <app-left *appDisablable="true"></app-left>
+      </td>
+      <td>
+        <app-right *appDisablable="true"></app-right>
+      </td>
+    </tr>
+  </table>
+
   <router-outlet></router-outlet>
 </div>

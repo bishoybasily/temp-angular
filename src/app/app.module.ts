@@ -10,6 +10,9 @@ import {MeService} from './service/me.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BasicAuthInterceptor} from './interceptor/basic-auth.interceptor';
 import {LoggingInterceptor} from './interceptor/logging-interceptor';
+import {DisablableModule} from './disablable/disablable.module';
+import {LeftComponent} from './left/left.component';
+import {RightComponent} from './right/right.component';
 
 
 const routes: Routes = [{
@@ -26,6 +29,12 @@ const routes: Routes = [{
       path: 'sub3',
       component: Sub3Component
     }]
+  }, {
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
+  }, {
+    path: 'customers',
+    loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)
   }]
 }];
 
@@ -48,12 +57,15 @@ const INTERCEPTORS = [{
     AppComponent,
     Sub1Component,
     Sub2Component,
-    Sub3Component
+    Sub3Component,
+    LeftComponent,
+    RightComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    DisablableModule
   ],
   providers: [...INTERCEPTORS, ...SERVICES],
   bootstrap: [AppComponent]
