@@ -13,6 +13,8 @@ import {LoggingInterceptor} from './interceptor/logging-interceptor';
 import {DisablableModule} from './disablable/disablable.module';
 import {LeftComponent} from './left/left.component';
 import {RightComponent} from './right/right.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthGuard} from './auth.guard';
 
 
 const routes: Routes = [{
@@ -22,6 +24,8 @@ const routes: Routes = [{
 }, {
   path: 'sub1',
   component: Sub1Component,
+  canActivate: [AuthGuard],
+  canActivateChild: [AuthGuard],
   children: [{
     path: 'sub2',
     component: Sub2Component,
@@ -65,7 +69,9 @@ const INTERCEPTORS = [{
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    DisablableModule
+    DisablableModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [...INTERCEPTORS, ...SERVICES],
   bootstrap: [AppComponent]

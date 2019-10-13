@@ -10,11 +10,15 @@
 
   <table>
     <tr>
+      <td><input (click)="left = !left" type="button" value="toggle left"></td>
+      <td><input (click)="right = !right" type="button" value="toggle right"></td>
+    </tr>
+    <tr>
       <td>
-        <app-left *appDisablable="true"></app-left>
+        <app-left *appDisablable="left"></app-left>
       </td>
       <td>
-        <app-right *appDisablable="true"></app-right>
+        <app-right *appDisablable="right"></app-right>
       </td>
     </tr>
   </table>

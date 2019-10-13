@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {MeService} from '../service/me.service';
 
 @Component({
   selector: 'app-left',
@@ -7,7 +8,9 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LeftComponent implements OnInit {
 
-  constructor() {
+  value = 'Click left';
+
+  constructor(private meService: MeService) {
   }
 
   ngOnInit() {

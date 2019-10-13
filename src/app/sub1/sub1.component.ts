@@ -9,6 +9,9 @@ import {User} from '../model/user';
 })
 export class Sub1Component implements OnInit {
 
+  left: boolean;
+  right: boolean;
+
   user: User;
 
   constructor(private serviceMe: MeService) {
